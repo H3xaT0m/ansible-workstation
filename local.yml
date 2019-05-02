@@ -11,3 +11,6 @@
       name: "{{ default_packages }}"
       state: latest
 
+  - name: Test running
+    command: hostname
+
