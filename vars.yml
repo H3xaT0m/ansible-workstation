@@ -2,4 +2,6 @@ default_packages:
   - vim
   - tmux
   - zsh
+  - chromium
+  - rxvt-unicode
 

@@ -11,6 +11,6 @@
       name: "{{ default_packages }}"
       state: latest
 
-  - name: Test running
+  - name: Apply dotfiles
     command: hostname
 
