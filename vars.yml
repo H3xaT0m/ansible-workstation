@@ -1,7 +1,17 @@
 default_packages:
-  - vim
-  - tmux
-  - zsh
+  - calc
   - chromium
+  - docker
+  - gradle
+  - htop
+  - intellij-idea-community-editioni
+  - nerd-fonts-terminus
+  - openjdk10-doc
+  - openjdk10-src
+  - openjdk8-doc
+  - openjdk8-src
   - rxvt-unicode
+  - tmux
+  - vim
+  - zsh
 
