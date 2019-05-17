@@ -4,7 +4,7 @@
   * Manjaro i3
     * tz=Europe/Berlin
     * keytable=us
-    * lang=de_DE
+    * lang=en_US
     * driver=nonfree
 * Installed Ansible
 * Installed Git
