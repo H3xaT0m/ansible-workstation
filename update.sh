@@ -4,7 +4,7 @@
 set -e
 
 # check and install required packages
-if [ ! pacman -Qi git > /dev/null ] || [ ! pacman -Qi ansible > /dev/null ]
+if [ ! pacman -Qi git > /dev/null ] || [ ! pacman -Qi ansible > /dev/null ];
 then
     pacman -Syyuq --noconfirm git ansible
 fi
