@@ -1,17 +1,22 @@
 default_packages:
   - calc
   - chromium
+  - curl
   - docker
+  - feh
   - gradle
   - htop
-  - intellij-idea-community-editioni
+  - iptables
+  - i3-scrot
+  - jdk8-openjdk
   - nerd-fonts-terminus
-  - openjdk10-doc
-  - openjdk10-src
   - openjdk8-doc
   - openjdk8-src
   - rxvt-unicode
+  - tar
   - tmux
   - vim
   - zsh
+
+home_dir: "{{·lookup('env','HOME')·}}"
 

@@ -3,14 +3,6 @@
   become: true
   vars_files:
     - vars.yml
-  tasks:
-  - name: Install default packages
-    pacman:
-      update_cache: yes
-      upgrade: yes
-      name: "{{ default_packages }}"
-      state: latest
-
-  - name: Apply dotfiles
-    command: hostname
+  - import_tasks: tasks/package_install.yml
+  - import_tasks: tasks/dotfiles.yml
 

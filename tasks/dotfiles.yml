@@ -1,0 +1,71 @@
+---
+- name: Pull dotfiles
+  git:
+    dest: "{{ home_dir }}"
+    repo: "https://github.com/H3xaT0m/dotfiles.git"
+    track_submodules: yes
+
+  - name: symlink .gitconfig
+    file:
+      src: "{{ home_dir }}/dotfiles/.gitconfig"
+      dest: "{{ home_dir }}/.gitconfig"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      state: link
+
+  - name: symlink .tmux.conf
+    file:
+      src: "{{ home_dir }}/dotfiles/.tmux.conf"
+      dest: "{{ home_dir }}/.tmux.conf"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      state: link
+
+  - name: symlink .vim
+    file:
+      src: "{{ home_dir }}/dotfiles/.vim"
+      dest: "{{ home_dir }}/.vim"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      state: link
+
+  - name: symlink .xinitrc
+    file:
+      src: "{{ home_dir }}/dotfiles/.xinitrc"
+      dest: "{{ home_dir }}/.xinitrc"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      state: link
+
+  - name: symlink .Xmodmap
+    file:
+      src: "{{ home_dir }}/dotfiles/.Xmodmap"
+      dest: "{{ home_dir }}/.Xmodmap"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      state: link
+
+  - name: symlink .Xresources
+    file:
+      src: "{{ home_dir }}/dotfiles/.Xresources"
+      dest: "{{ home_dir }}/.Xresources"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      state: link
+
+  - name: symlink .zprofile
+    file:
+      src: "{{ home_dir }}/dotfiles/.zprofile"
+      dest: "{{ home_dir }}/.zprofile"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      state: link
+
+  - name: symlink .zsh
+    file:
+      src: "{{ home_dir }}/dotfiles/.zsh"
+      dest: "{{ home_dir }}/.zsh"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      state: link
+
