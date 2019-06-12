@@ -13,7 +13,7 @@
   register: dotfiles_found
 
 - debug:
-    msg: {{ item.path }}
+    msg: "{{ item.path }}"
   with_items: dotfiles_found.files
 
     #- name: symlink .gitconfig
