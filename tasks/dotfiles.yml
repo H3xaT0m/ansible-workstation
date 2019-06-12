@@ -9,7 +9,7 @@
 - name: find dotfiles
   find:
     paths: "{{ home_dir }}/dotfiles"
-    patterns: '.gitmodules,.gitignore'
+    excludes: '.gitmodules,.gitignore'
     hidden: yes
   register: dotfiles_found
 
