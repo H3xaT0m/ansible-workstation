@@ -4,7 +4,7 @@
 set -e
 
 # check and install required packages
-sudo pacman -Syyuq --noconfirm git ansible
+sudo pacman -Syq --noconfirm git ansible
 
 # run ansible
 ansible-pull -U https://github.com/H3xaT0m/ansible-workstation.git main.yml
