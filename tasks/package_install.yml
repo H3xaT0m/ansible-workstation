@@ -1,8 +1,12 @@
 ---
-- name: Install default packages
+- name: update whole system
   pacman:
     update_cache: yes
     upgrade: yes
+
+- name: Install default packages
+  pacman:
+    update_cache: yes
     name: "{{ default_packages }}"
     state: latest
 
