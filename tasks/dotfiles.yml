@@ -3,6 +3,7 @@
   git:
     dest: "{{ home_dir }}/dotfiles"
     repo: "https://github.com/H3xaT0m/dotfiles.git"
+    force: yes
     track_submodules: yes
 
 - name: find dotfiles
