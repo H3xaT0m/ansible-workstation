@@ -16,7 +16,7 @@
 - name: symlink dotfiles
   file:
     src: "{{ item.path }}"
-    dest: "{{ home_dir }}/{{ item.path.split('/')[-1] }}"
+    dest: "{{ home_dir }}/{{ item.path.split('/')[-1] | lower }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     state: link
