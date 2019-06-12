@@ -20,9 +20,6 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     state: link
-
-- debug:
-    msg: "{{ item.path }}"
   with_items: "{{ dotfiles_found.files }}"
 
   #- name: symlink .gitconfig
