@@ -13,18 +13,26 @@
     hidden: yes
   register: dotfiles_found
 
+- name: symlink dotfiles
+  file:
+    src: "{{ item.path }}"
+    dest: "{{ home_dir }}/{{ item.path.split('/') | last }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+
 - debug:
     msg: "{{ item.path }}"
   with_items: "{{ dotfiles_found.files }}"
 
-    #- name: symlink .gitconfig
-    #  file:
-    #    src: "{{ home_dir }}/dotfiles/.gitconfig"
-    #    dest: "{{ home_dir }}/.gitconfig"
-    #    owner: "{{ ansible_user }}"
-    #    group: "{{ ansible_user }}"
-    #    state: link
-    #
+  #- name: symlink .gitconfig
+  #  file:
+  #    src: "{{ home_dir }}/dotfiles/.gitconfig"
+  #    dest: "{{ home_dir }}/.gitconfig"
+  #    owner: "{{ ansible_user }}"
+  #    group: "{{ ansible_user }}"
+  #    state: link
+  #
     #- name: symlink .tmux.conf
     #  file:
     #    src: "{{ home_dir }}/dotfiles/.tmux.conf"
