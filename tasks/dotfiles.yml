@@ -5,6 +5,16 @@
     repo: "https://github.com/H3xaT0m/dotfiles.git"
     track_submodules: yes
 
+  - name: find dotfiles
+    find:
+      paths: "{{ home_dir }}/dotfiles"
+      hiiden: yes
+      recurse: yes
+    register: dotfiles_found
+
+  - debug:
+      var: dotfiles_found
+
   - name: symlink .gitconfig
     file:
       src: "{{ home_dir }}/dotfiles/.gitconfig"
