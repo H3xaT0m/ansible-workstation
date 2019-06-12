@@ -18,5 +18,5 @@ default_packages:
   - vim
   - zsh
 
-home_dir: "{{·lookup('env','HOME')·}}"
+home_dir: "{{ lookup('env','HOME') }}"
 
