@@ -3,7 +3,8 @@
   become: true
   vars_files:
     - vars.yml
-  import_tasks:
-    - tasks/package_install.yml
-    - tasks/dotfiles.yml
+  tasks:
+    import_tasks:
+      - tasks/package_install.yml
+      - tasks/dotfiles.yml
 
