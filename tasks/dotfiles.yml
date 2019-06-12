@@ -8,7 +8,7 @@
   - name: find dotfiles
     find:
       paths: "{{ home_dir }}/dotfiles"
-      hiiden: yes
+      hidden: yes
       recurse: yes
     register: dotfiles_found
 
