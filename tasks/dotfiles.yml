@@ -1,7 +1,7 @@
 ---
 - name: Pull dotfiles
   git:
-    dest: "{{ home_dir }}"
+    dest: "{{ home_dir }}/dotfiles"
     repo: "https://github.com/H3xaT0m/dotfiles.git"
     track_submodules: yes
 
