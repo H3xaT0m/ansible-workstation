@@ -15,14 +15,14 @@
 
 - name: delete old dotfiles
   file:
-    path: "{{ home_dir }}/{{ item.path.split('/')[-1] | lower }}"
+    path: "{{ home_dir }}/{{ item.path.split('/')[-1] }}"
     state: absent
   with_items: "{{ dotfiles_found.files }}"
 
 - name: symlink dotfiles
   file:
     src: "{{ item.path }}"
-    dest: "{{ home_dir }}/{{ item.path.split('/')[-1] | lower }}"
+    dest: "{{ home_dir }}/{{ item.path.split('/')[-1] }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     state: link
@@ -46,7 +46,7 @@
 
 - name: pull vim plugins
   git:
-    dest: "{{ vim_plugin_dir }}/{{ item.split('/')[-1].split('.')[0] | lower }}"
+    dest: "{{ vim_plugin_dir }}/{{ item.split('/')[-1].split('.')[0] }}"
     repo: "{{ item }}"
     force: yes
   with_items: "{{ vim_plugins }}"
@@ -69,7 +69,7 @@
 
 - name: pull zsh plugins
   git:
-    dest: "{{ zsh_plugin_dir }}/{{ item.split('/')[-1].split('.')[0] | lower }}"
+    dest: "{{ zsh_plugin_dir }}/{{ item.split('/')[-1].split('.')[0] }}"
     repo: "{{ item }}"
     force: yes
   with_items: "{{ zsh_plugins }}"
