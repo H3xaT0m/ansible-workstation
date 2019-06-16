@@ -14,10 +14,10 @@
   register: dotfiles_found
 
 - name: backup dotfiles
-  command: "mv {{ home_dir }}/{{ item.path.split('/')[-1] | lower }} {{ home_dir }}/{{ item.path.split('/')[-1] | lower }}_backup{{ ansible_date_time.epoch }}"
+  command: "mv {{ item }} {{ item }}_backup{{ ansible_date_time.epoch }}"
   args:
-    removes: "{{ home_dir }}/{{ item.path.split('/')[-1] | lower }}"
-  with_items: "{{ dotfiles_found.files }}"
+    removes: "{{ item }}"
+  with_items: "{{ home_dir }}/{{ dotfiles_found.files.path.split('/')[-1] | lower }}"
 
 - name: symlink dotfiles
   file:
