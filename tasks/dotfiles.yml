@@ -14,13 +14,13 @@
   register: dotfiles_found
 
 - name: backup dotfiles
-  - stat:
-      path: "{{ item.path }}"
-    register: file
-  - copy:
-      src: "{{ item.path }}"
-      dest: "{{ item.path }}_backup{{ ansible_date_time.epoch }}"
-    when: file.stat.isreg is defined and file.stat.isreg
+  stat:
+    path: "{{ item.path }}"
+  register: file
+  copy:
+    src: "{{ item.path }}"
+    dest: "{{ item.path }}_backup{{ ansible_date_time.epoch }}"
+  when: file.stat.isreg is defined and file.stat.isreg
 
 - name: symlink dotfiles
   file:
