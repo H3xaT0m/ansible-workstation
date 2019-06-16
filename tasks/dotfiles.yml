@@ -9,7 +9,7 @@
 - name: find dotfiles
   find:
     paths: "{{ dotfiles_dir }}"
-    excludes: '.gitmodules,.gitignore,.vimrc'
+    excludes: '.gitmodules,.gitignore,.vimrc,.zshrc'
     hidden: yes
   register: dotfiles_found
 
