@@ -46,7 +46,7 @@
 
 - name: pull vim plugins
   git:
-    dest: "{{ vim_plugin_dir }}/{{ item.path.split('/')[-1].split('.')[0] | lower }}"
+    dest: "{{ vim_plugin_dir }}/{{ item.split('/')[-1].split('.')[0] | lower }}"
     repo: "{{ item }}"
     force: yes
   with_items: "{{ vim_plugins }}"
@@ -69,7 +69,7 @@
 
 - name: pull zsh plugins
   git:
-    dest: "{{ zsh_plugin_dir }}/{{ item.path.split('/')[-1].split('.')[0] | lower }}"
+    dest: "{{ zsh_plugin_dir }}/{{ item.split('/')[-1].split('.')[0] | lower }}"
     repo: "{{ item }}"
     force: yes
   with_items: "{{ zsh_plugins }}"
