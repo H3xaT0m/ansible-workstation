@@ -13,7 +13,7 @@
     hidden: yes
   register: dotfiles_found
 
-- name: backup dotfiles
+- name: delete old dotfiles
   file:
     path: "{{ home_dir }}/{{ item.path.split('/')[-1] | lower }}"
     state: absent
