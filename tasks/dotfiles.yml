@@ -14,7 +14,7 @@
   register: dotfiles_found
 
 - name: backup dotfiles
-  command: "mv {{ item.path }} {{ item.path }}_backup{{ ansible_date_time.epoch }}"
+  command: mv "{{ item.path }}" "{{ item.path }}_backup{{ ansible_date_time.epoch }}"
     removes: "{{ item.path }}"
   with_items: "{{ dotfiles_found.files }}"
 
