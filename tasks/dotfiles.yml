@@ -16,10 +16,12 @@
 - name: backup dotfiles
   stat:
     path: "{{ item.path }}"
+  with_items: "{{ dotfiles_found.files }}"
   register: file
   copy:
     src: "{{ item.path }}"
     dest: "{{ item.path }}_backup{{ ansible_date_time.epoch }}"
+  with_items: "{{ dotfiles_found.files }}"
   when: file.stat.isreg is defined and file.stat.isreg
 
 - name: symlink dotfiles
