@@ -79,3 +79,17 @@
     name: "{{ ansible_user }}"
     shell: "{{ default_shell }}"
 
+# Display Section
+- name: add HiDPI section if necessary
+  blockinfile:
+    path: "{{ home_dir }}/.Xresources"
+    block: |
+      Xft.dpi: 192
+      Xft.autohint: 0
+      Xft.lcdfilter:  lcddefault
+      Xft.hintstyle:  hintfull
+      Xft.hinting: 1
+      Xft.antialias: 1
+      Xft.rgba: rgb
+  when: hidpi
+

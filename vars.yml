@@ -35,3 +35,5 @@ zsh_plugins:
   - "https://github.com/zsh-users/zsh-syntax-highlighting.git"
 
 default_shell: "/usr/bin/zsh"
+
+hidpi: false
