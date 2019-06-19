@@ -74,3 +74,8 @@
     force: yes
   with_items: "{{ zsh_plugins }}"
 
+- name: make zsh default
+  user:
+    name: "{{ ansible_user }}"
+    shell: "{{ default_shell }}"
+
