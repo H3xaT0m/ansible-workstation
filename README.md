@@ -7,7 +7,6 @@
     * lang=en_US
     * driver=nonfree
 * Installed Ansible
-* Installed Git
 
 # If you're brave, you can use the `update.sh` script as following:
 ```bash

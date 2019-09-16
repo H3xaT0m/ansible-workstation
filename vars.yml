@@ -1,9 +1,10 @@
 default_packages:
   - calc
-  - chromium
   - curl
   - docker
   - feh
+  - firefox
+  - git
   - gradle
   - htop
   - iptables
