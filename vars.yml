@@ -1,4 +1,4 @@
-default_packages:
+default_install_packages:
   - calc
   - curl
   - docker
@@ -19,13 +19,23 @@ default_packages:
   - vim
   - zsh
 
+default_dirs:
+  - Desktop
+  - Documents
+  - Downloads
+  - Music
+  - Pictures
+  - Public
+  - Templates
+  - Videos
+
 home_dir: "{{ lookup('env','HOME') }}"
 
 dotfiles_dir: "{{ home_dir }}/dotfiles"
 dotfiles_repo: "https://github.com/H3xaT0m/dotfiles.git"
 
 vim_dir: "{{ home_dir }}/.vim"
-vim_plugin_dir: "{{ vim_dir }}/pack/hexatom/start"
+vim_plugin_dir: "{{ vim_dir }}/pack/plugins/start"
 vim_plugins:
   - "https://github.com/airblade/vim-gitgutter.git"
 
@@ -34,6 +44,8 @@ zsh_plugin_dir: "{{ zsh_dir }}/plugins"
 zsh_plugins:
   - "https://github.com/zsh-users/zsh-autosuggestions.git"
   - "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+
+tmux_dir: "{{ home_dir }}/.tmux"
 
 default_shell: "/usr/bin/zsh"
 

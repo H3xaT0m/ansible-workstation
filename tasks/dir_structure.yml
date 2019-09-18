@@ -1,0 +1,6 @@
+---
+- name: Remove default dirs
+  file:
+    path: "{{ home_dir}}/{{ default_dirs }}"
+    state: absent
+

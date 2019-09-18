@@ -5,5 +5,6 @@
     - vars.yml
   tasks:
     - import_tasks: tasks/package_install.yml
+    - import_tasks: tasks/dir_structure.yml
     - import_tasks: tasks/dotfiles.yml
 

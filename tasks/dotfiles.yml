@@ -9,15 +9,22 @@
 - name: find dotfiles
   find:
     paths: "{{ dotfiles_dir }}"
-    excludes: '.gitmodules,.gitignore,.vimrc,.zshrc'
+    excludes: '.gitmodules,.gitignore,.vimrc,.zshrc,.tmux.conf'
     hidden: yes
   register: dotfiles_found
+
+- name: find non-symlink dotfiles
+  find:
+    path: "{{ home_dir }}/{{ item.path.split('/')[-1] }}"
+    hidden: yes
+  with_items: "{{ dotfiles_found.files }}"
+  register: dotfiles_non_symlink
 
 - name: delete old dotfiles
   file:
     path: "{{ home_dir }}/{{ item.path.split('/')[-1] }}"
     state: absent
-  with_items: "{{ dotfiles_found.files }}"
+  with_items: "{{ dotfiles_non_symlink.files }}"
 
 - name: symlink dotfiles
   file:
@@ -39,7 +46,7 @@
 - name: symlink .vimrc
   file:
     src: "{{ dotfiles_dir }}/.vimrc"
-    dest: "{{ vim_dir }}/.vimrc"
+    dest: "{{ vim_dir }}/vimrc"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     state: link
@@ -51,8 +58,14 @@
     force: yes
   with_items: "{{ vim_plugins }}"
 
+- name: create vim.local
+  file:
+    path: "{{ vim_dir }}/vimrc.local"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
 # Zsh Section
-- name: create .zsh dirs
+- name: create .zsh dir
   file:
     path: "{{ zsh_plugin_dir }}"
     owner: "{{ ansible_user }}"
@@ -79,6 +92,28 @@
     name: "{{ ansible_user }}"
     shell: "{{ default_shell }}"
 
+# Tmux Section
+- name: create .tmux dir
+  file:
+    path: "{{ tmux_dir }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: directory
+
+- name: symlink .tmux.conf
+  file:
+    src: "{{ dotfiles_dir }}/.tmux.conf"
+    dest: "{{ tmux_dir }}/.tmux.conf"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+
+- name: create .tmux.conf.local
+  file:
+    path: "{{ tmux_dir }}/.tmux.conf.local"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
 # Display Section
 - name: add HiDPI section if necessary
   blockinfile:
@@ -92,4 +127,11 @@
       Xft.antialias: 1
       Xft.rgba: rgb
   when: hidpi|bool
+
+# Local Config File Section
+- name: create .gitconfig.local
+  file:
+    path: "{{ home_dir }}/.gitconfig.local"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
 
